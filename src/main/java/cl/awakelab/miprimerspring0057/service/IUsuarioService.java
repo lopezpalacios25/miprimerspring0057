@@ -12,4 +12,5 @@ public interface IUsuarioService {
 
     public Usuario listarUsuarioId(int id);
     public boolean eliminarUsuario(int id);
+    public boolean eliminarUsuario2(Usuario usuario);
 }

@@ -29,7 +29,18 @@ public class CursoServiceImpl implements ICursoService {
     }
 
     @Override
+    public Curso listarCursoId(int id) {
+        return objCursoRepo.findById(id).orElse(null);
+    }
+
+    @Override
     public boolean eliminarCurso(int id) {
-        return false;
+        objCursoRepo.deleteById(id);
+        return true;
+    }
+    @Override
+    public boolean eliminarCurso2(Curso curso) {
+        objCursoRepo.delete(curso);
+        return true;
     }
 }

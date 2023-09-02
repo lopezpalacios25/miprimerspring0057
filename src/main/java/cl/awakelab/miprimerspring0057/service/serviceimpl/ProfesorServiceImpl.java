@@ -35,8 +35,20 @@ public class ProfesorServiceImpl implements IProfesorService {
     }
 
     @Override
-    public boolean eliminarProfesor(int id) {
+    public Profesor listarProfesorId(int id) {
+        return objProfesorRepo.findById(id).orElse(null);
+    }
 
+    @Override
+    public boolean eliminarProfesor(int id) {
+        objProfesorRepo.deleteById(id);
         return false;
+    }
+
+    @Override
+    public boolean eliminarProfesor2(Profesor profesor) {
+
+        objProfesorRepo.delete(profesor);
+        return true;
     }
 }
