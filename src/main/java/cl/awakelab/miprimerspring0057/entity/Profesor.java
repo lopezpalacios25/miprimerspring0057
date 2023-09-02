@@ -26,7 +26,7 @@ public class Profesor {
     private String apellido1;
 
     @Column
-    private String apelliod2;
+    private String apellido2;
 
     @ManyToMany
     @JoinTable(name = "curso_profesor",
