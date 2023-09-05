@@ -1,6 +1,8 @@
 package cl.awakelab.miprimerspring0057.restcontroller;
 
 import cl.awakelab.miprimerspring0057.entity.Alumno;
+import cl.awakelab.miprimerspring0057.entity.Curso;
+import cl.awakelab.miprimerspring0057.repository.ICursoRepository;
 import cl.awakelab.miprimerspring0057.service.IAlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +16,14 @@ public class AlumnoRestController {
     @Autowired
     IAlumnoService objAlumnoService;
 
+
+
     @PostMapping
     public Alumno crearAlumno(@RequestBody Alumno alumno){
+
         objAlumnoService.crearAlumno(alumno);
         return alumno;
+
     }
 
     @PutMapping("/{id}")
