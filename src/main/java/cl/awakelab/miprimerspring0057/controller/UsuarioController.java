@@ -5,11 +5,8 @@ import cl.awakelab.miprimerspring0057.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,11 +16,60 @@ public class UsuarioController {
     @Autowired
     IUsuarioService objUsuarioService;
 
-    @GetMapping
+    @GetMapping("/listar")
     public String listarUsuarios(Model model){
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuario();
         model.addAttribute("atributoListaUsuarios", listaUsuarios);
         return "templateListarUsuarios";
+    }
+
+
+    @GetMapping("/listar/{id}")
+    public String listarUsuarioId(@PathVariable int id, Model model){
+        model.addAttribute("tituloUsuarioId", "Usuario encontrado por ID");
+        Usuario usuarioEncontrado = objUsuarioService.listarUsuarioId(id);
+        model.addAttribute("usuarioEncontrado",usuarioEncontrado);
+        return "listarPorId";
+    }
+
+
+    @GetMapping("/agregar")
+    public String formulario(Model model){
+        model.addAttribute("titulo", "Formulario de agregación de usuario");
+        return "formUsuario";
+    }
+
+    @PostMapping("/agregarUsuario")
+    public String agregarUsuario(Model model, @RequestParam String nombre,
+                                 @RequestParam String password, @RequestParam String rol){
+        Usuario usuarioAgregar = new Usuario();
+        usuarioAgregar.setNombre(nombre);
+        usuarioAgregar.setPassword(password);
+        usuarioAgregar.setRol(rol);
+
+        objUsuarioService.crearUsuario(usuarioAgregar);
+
+        model.addAttribute("mensaje","Usuario agregado correctamente");
+
+        return "formUsuario";
+    }
+
+    @GetMapping("/crearUsuario")
+    public String formCrearUsuario(){
+        return "templateCrearUsuario";
+    }
+
+    @PostMapping("/crearUsuario")
+    public String crearUsuario(@ModelAttribute Usuario usuario){
+        objUsuarioService.crearUsuario(usuario);
+        return "redirect:/usuario/listar";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarUsuario(@PathVariable int id){
+
+        objUsuarioService.eliminarUsuario(id);
+        return "redirect:/usuario/listar";
     }
 
 }
