@@ -52,13 +52,10 @@ public class AlumnoServiceImpl implements IAlumnoService {
 
     @Override
     public boolean eliminarAlumno(int id) {
-        try{
+
             objAlumnoRepo.deleteById(id);
             return true;
 
-        }catch (Exception e){
-            return false;
-        }
     }
 
     @Override

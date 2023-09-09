@@ -1,23 +1,42 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Inicio</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand">Gestión de Colegio</a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/usuario/listar">Listar Usuarios</a>
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Usuarios</a>
+            <div class="dropdown-menu">
+              <a href="/usuario/listar" class="dropdown-item">Listar - Editar - Eliminar</a>
+              <a href="/usuario/crearUsuario" class="dropdown-item">Crear Usuario</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/usuario/crearUsuario">Crear Usuario</a>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Cursos</a>
+            <div class="dropdown-menu">
+              <a href="/curso/listar" class="dropdown-item">Listar - Editar - Eliminar</a>
+              <a href="/curso/crearCurso" class="dropdown-item">Crear Curso</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cursos">Cursos</a>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alumnos</a>
+            <div class="dropdown-menu">
+              <a href="/alumno/listar" class="dropdown-item">Listar - Editar - Eliminar</a>
+              <a href="/alumno/crearAlumno" class="dropdown-item">Crear Alumno</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profesores</a>
+            <div class="dropdown-menu">
+              <a href="/profesor/listar" class="dropdown-item">Listar - Editar - Eliminar</a>
+              <a href="/profesor/crearProfesor" class="dropdown-item">Crear Profesor</a>
+            </div>
           </li>
         </ul>
+
       </div>
     </div>
   </nav>

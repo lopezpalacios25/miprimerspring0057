@@ -29,4 +29,11 @@ public class Curso {
     @JsonIgnore
     @OneToMany(mappedBy = "cursoAsignado")
     private List<Alumno> listaAlumnos;
+
+    @Override
+    public String toString() {
+        return "Curso[id=" + id + ", nombreCurso=" + nombreCurso + "]";
+    }
+
+
 }

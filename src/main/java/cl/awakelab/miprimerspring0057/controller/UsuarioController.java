@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    IUsuarioService objUsuarioService;
+    private IUsuarioService objUsuarioService;
 
     @GetMapping("/listar")
     public String listarUsuarios(Model model){
