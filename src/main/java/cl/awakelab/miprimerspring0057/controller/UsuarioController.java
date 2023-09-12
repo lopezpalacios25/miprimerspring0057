@@ -2,6 +2,7 @@ package cl.awakelab.miprimerspring0057.controller;
 
 import cl.awakelab.miprimerspring0057.entity.Usuario;
 import cl.awakelab.miprimerspring0057.service.IUsuarioService;
+import jakarta.jws.WebParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,6 +65,21 @@ public class UsuarioController {
         objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario/listar";
     }
+
+    @GetMapping("/actualizar/{id}")
+    public String actualizarUsuarioForm(Model model, @PathVariable Integer id){
+        Usuario usuario = objUsuarioService.listarUsuarioId(id);
+        model.addAttribute("usuario",usuario);
+        return "templateActualizarUsuario";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarUsuario(@ModelAttribute Usuario usuario){
+
+        objUsuarioService.actualizarUsuario(usuario);
+        return "redirect:/usuario/listar";
+    }
+
 
     @PostMapping("/eliminar/{id}")
     public String eliminarUsuario(@PathVariable int id){
