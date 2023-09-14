@@ -31,7 +31,7 @@
                 <td th:text="${alumno.apellido1}" class="col-1"></td>
                 <td th:text="${alumno.apellido2}" class="col-1"></td>
                 <td th:text="${alumno.cursoAsignado.getNombreCurso()}" class="col-1"></td>
-                <td class="col-1"><form th:action="@{/alumno/editar/{id}(id=${alumno.id})}"
+                <td class="col-1"><form th:action="@{/alumno/actualizar/{id}(id=${alumno.id})}"
                           method="get">
                     <button class="btn btn-warning" type="submit">Editar</button>
                 </form></td>

@@ -2,6 +2,7 @@ package cl.awakelab.miprimerspring0057.controller;
 
 import cl.awakelab.miprimerspring0057.entity.Alumno;
 import cl.awakelab.miprimerspring0057.entity.Curso;
+import cl.awakelab.miprimerspring0057.entity.Usuario;
 import cl.awakelab.miprimerspring0057.service.IAlumnoService;
 import cl.awakelab.miprimerspring0057.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,22 @@ public class AlumnoController {
     @PostMapping("/crearAlumno")
     public String crearAlumno(@ModelAttribute Alumno alumno){
         objAlumnoService.crearAlumno(alumno);
+        return "redirect:/alumno/listar";
+    }
+
+    @GetMapping("/actualizar/{id}")
+    public String actualizarAlumnoForm(Model model, @PathVariable Integer id){
+        Alumno alumno = objAlumnoService.listarAlumnoId(id);
+        List<Curso> listaCursos = objCursoService.listarCursos();
+        model.addAttribute("listaCursos", listaCursos);
+        model.addAttribute("alumno",alumno);
+        return "templateActualizarAlumno";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarAlumno(@ModelAttribute Alumno alumno){
+        objAlumnoService.actualizarAlumno(alumno);
+
         return "redirect:/alumno/listar";
     }
 

@@ -18,7 +18,7 @@
                 <th>ID</th>
                 <th>Nombres</th>
                 <th>Primer Apellido</th>
-                <th>ASegundo Apellido</th>
+                <th>Segundo Apellido</th>
                 <th>Cursos Asignados</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -35,7 +35,7 @@
                         <option th:each="curso : ${profesor.listaCursos}" th:text="${curso.nombreCurso}" th:value="${curso.id}"></option>
                     </select>
                 </td>
-                <td class="col-1"><form th:action="@{/profesor/editar/{id}(id=${profesor.id})}"
+                <td class="col-1"><form th:action="@{/profesor/actualizar/{id}(id=${profesor.id})}"
                           method="get">
                     <button class="btn btn-warning" type="submit">Editar</button>
                 </form></td>

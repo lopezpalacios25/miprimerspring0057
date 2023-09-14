@@ -37,7 +37,7 @@
                         <option th:each="alumno : ${curso.listaAlumnos}" th:value="${alumno.id}" th:text="${alumno.nombres +' '+ alumno.apellido1 +' '+ alumno.apellido2}"></option>
                     </select>
                 </td>
-                <td class="col-1"><form th:action="@{/curso/editar/{id}(id=${curso.id})}"
+                <td class="col-1"><form th:action="@{/curso/actualizar/{id}(id=${curso.id})}"
                           method="get">
                     <button class="btn btn-warning" type="submit">Editar</button>
                 </form></td>

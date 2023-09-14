@@ -28,10 +28,10 @@
         </div>
         <div>
             <label for="rol" class="form-label">Rol</label>
-            <select class="form-control" name="rol" id="rol" required>
-                <option value="Profesor">Profesor</option>
-                <option value="Estudiante">Estudiante</option>
-                <option value="Administrador">Administrador</option>
+            <select class="form-control" name="rol" id="rol" required th:selected="${usuario.rol}">
+                <option value="Profesor" th:selected="${usuario.rol == 'Profesor'}">Profesor</option>
+                <option value="Estudiante" th:selected="${usuario.rol == 'Estudiante'}">Estudiante</option>
+                <option value="Administrador" th:selected="${usuario.rol == 'Administrador'}">Administrador</option>
             </select>
         </div>
         <div>

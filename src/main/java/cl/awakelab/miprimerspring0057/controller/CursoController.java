@@ -36,20 +36,27 @@ public class CursoController {
     }
 
     @GetMapping("/crearCurso")
-    public String crearCurso(Model model){
-        List<Profesor> listaProfesores = objProfesorService.listarProfesores();
-        //List<Alumno> listaAlumnos = objAlumnoService.listarAlumno();
-        Curso curso = new Curso();
-        model.addAttribute("curso", curso);
-        model.addAttribute("listaProfesores",listaProfesores);
-        //model.addAttribute("listaAlumnos",listaAlumnos);
+    public String crearCurso(){
         return "templateCrearCurso";
     }
 
     @PostMapping("/crearCurso")
-    public String crearCurso(@ModelAttribute("curso") Curso curso){
+    public String crearCurso(@ModelAttribute Curso curso){
 
         objCursoService.crearCurso(curso);
+        return "redirect:/curso/listar";
+    }
+
+    @GetMapping("/actualizar/{id}")
+    public String actualizarCursoForm(Model model, @PathVariable Integer id){
+        Curso curso = objCursoService.listarCursoId(id);
+        model.addAttribute("curso",curso);
+        return "templateActualizarCurso";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarCurso(@ModelAttribute Curso curso){
+        objCursoService.actualizarCurso(curso);
         return "redirect:/curso/listar";
     }
 

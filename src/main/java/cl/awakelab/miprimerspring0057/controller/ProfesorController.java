@@ -1,5 +1,6 @@
 package cl.awakelab.miprimerspring0057.controller;
 
+import cl.awakelab.miprimerspring0057.entity.Alumno;
 import cl.awakelab.miprimerspring0057.entity.Curso;
 import cl.awakelab.miprimerspring0057.entity.Profesor;
 import cl.awakelab.miprimerspring0057.service.ICursoService;
@@ -38,6 +39,21 @@ public class ProfesorController {
     @PostMapping("/crearProfesor")
     public String crearProfesor(@ModelAttribute Profesor profesor){
         objProfesorService.crearProfesor(profesor);
+        return "redirect:/profesor/listar";
+    }
+
+    @GetMapping("/actualizar/{id}")
+    public String actualizarProfesorForm(Model model, @PathVariable Integer id){
+        Profesor profesor = objProfesorService.listarProfesorId(id);
+        List<Curso> listaCursos = objCursoService.listarCursos();
+        model.addAttribute("listaCursos", listaCursos);
+        model.addAttribute("profesor",profesor);
+        return "templateActualizarProfesor";
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarProfesor(@ModelAttribute Profesor profesor){
+        objProfesorService.actualizarProfesor(profesor);
         return "redirect:/profesor/listar";
     }
 
