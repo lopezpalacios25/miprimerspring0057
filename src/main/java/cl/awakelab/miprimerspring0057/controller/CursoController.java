@@ -32,11 +32,13 @@ public class CursoController {
     public String listarCursos(Model model){
         List<Curso> listaCursos = objCursoService.listarCursos();
         model.addAttribute("listaCursos",listaCursos);
+        model.addAttribute("titulo", "Gestión de Cursos");
         return "templateCursos";
     }
 
     @GetMapping("/crearCurso")
-    public String crearCurso(){
+    public String crearCurso(Model model){
+        model.addAttribute("titulo", "Creación de Cursos");
         return "templateCrearCurso";
     }
 
@@ -51,6 +53,7 @@ public class CursoController {
     public String actualizarCursoForm(Model model, @PathVariable Integer id){
         Curso curso = objCursoService.listarCursoId(id);
         model.addAttribute("curso",curso);
+        model.addAttribute("titulo", "Edición de Curso");
         return "templateActualizarCurso";
     }
 

@@ -13,7 +13,6 @@
 <header th:include="~{../static/html/header.html}" ></header>
 
 <section class="container">
-    <h2><strong>Actualización de profesor</strong></h2>
     <form th:action="@{/profesor/actualizar}" method="post">
         <div hidden="hidden">
             <input type="text" class="form-control" id="id" name="id" required  th:value="${profesor.id}">

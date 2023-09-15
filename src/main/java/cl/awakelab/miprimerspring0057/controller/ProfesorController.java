@@ -26,6 +26,7 @@ public class ProfesorController {
     public String listarProfesores(Model model){
         List<Profesor> listaProfesores = objProfesorService.listarProfesores();
         model.addAttribute("listaProfesores",listaProfesores);
+        model.addAttribute("titulo", "Gestión de Profesores");
         return "templateProfesores";
     }
 
@@ -33,6 +34,7 @@ public class ProfesorController {
     public String formCrearProfesor(Model model){
         List<Curso> listaCursos = objCursoService.listarCursos();
         model.addAttribute("listaCursos", listaCursos);
+        model.addAttribute("titulo", "Creación de Profesor");
         return "templateCrearProfesor";
     }
 
@@ -48,6 +50,7 @@ public class ProfesorController {
         List<Curso> listaCursos = objCursoService.listarCursos();
         model.addAttribute("listaCursos", listaCursos);
         model.addAttribute("profesor",profesor);
+        model.addAttribute("titulo", "Edición de Profesor");
         return "templateActualizarProfesor";
     }
 

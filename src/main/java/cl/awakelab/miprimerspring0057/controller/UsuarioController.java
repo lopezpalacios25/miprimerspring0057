@@ -2,7 +2,6 @@ package cl.awakelab.miprimerspring0057.controller;
 
 import cl.awakelab.miprimerspring0057.entity.Usuario;
 import cl.awakelab.miprimerspring0057.service.IUsuarioService;
-import jakarta.jws.WebParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +20,7 @@ public class UsuarioController {
     public String listarUsuarios(Model model){
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuario();
         model.addAttribute("atributoListaUsuarios", listaUsuarios);
+        model.addAttribute("titulo", "Gestión de Usuarios");
         return "templateListarUsuarios";
     }
 
@@ -56,7 +56,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/crearUsuario")
-    public String formCrearUsuario(){
+    public String formCrearUsuario(Model model){
+        model.addAttribute("titulo", "Creación de Usuario");
         return "templateCrearUsuario";
     }
 
@@ -70,6 +71,7 @@ public class UsuarioController {
     public String actualizarUsuarioForm(Model model, @PathVariable Integer id){
         Usuario usuario = objUsuarioService.listarUsuarioId(id);
         model.addAttribute("usuario",usuario);
+        model.addAttribute("titulo", "Edición de usuario");
         return "templateActualizarUsuario";
     }
 

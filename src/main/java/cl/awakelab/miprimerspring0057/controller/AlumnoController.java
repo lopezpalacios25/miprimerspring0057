@@ -26,6 +26,7 @@ public class AlumnoController {
     public String listarAlumnos(Model model){
         List<Alumno> listaAlumnos = objAlumnoService.listarAlumno();
         model.addAttribute("listaAlumnos", listaAlumnos);
+        model.addAttribute("titulo", "Gestión de Alumnos");
         return "templateAlumnos";
     }
 
@@ -33,6 +34,7 @@ public class AlumnoController {
     public String formCrearAlumno(Model model){
         List<Curso> listaCursos = objCursoService.listarCursos();
         model.addAttribute("listaCursos", listaCursos);
+        model.addAttribute("titulo", "Creación de Alumno");
         return "templateCrearAlumno";
     }
 
@@ -48,6 +50,7 @@ public class AlumnoController {
         List<Curso> listaCursos = objCursoService.listarCursos();
         model.addAttribute("listaCursos", listaCursos);
         model.addAttribute("alumno",alumno);
+        model.addAttribute("titulo", "Edición de Alumno");
         return "templateActualizarAlumno";
     }
 

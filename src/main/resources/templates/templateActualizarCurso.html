@@ -13,7 +13,6 @@
 <header th:include="~{../static/html/header.html}" ></header>
 
 <section class="container">
-    <h2><strong>Actualización de Curso</strong></h2>
     <form th:action="@{/curso/actualizar}" method="post" th:object="${curso}">
         <div hidden="hidden">
             <input type="text" class="form-control" id="id" name="id" required placeholder="Ingrese nombre del curso" th:value="${curso.id}">
