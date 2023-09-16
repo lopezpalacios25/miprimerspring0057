@@ -31,7 +31,7 @@
                 <td th:text="${profesor.apellido1}" class="col-1"></td>
                 <td th:text="${profesor.apellido2}" class="col-1"></td>
                 <td class="col-1">
-                    <select >
+                    <select class="form-control">
                         <option th:each="curso : ${profesor.listaCursos}" th:text="${curso.nombreCurso}" th:value="${curso.id}"></option>
                     </select>
                 </td>

@@ -20,7 +20,9 @@
                 <th>Profesores asignados</th>
                 <th>Alumnos</th>
                 <th>Editar</th>
+                <!--
                 <th>Eliminar</th>
+                -->
             </tr>
             </thead>
             <tbody>
@@ -41,12 +43,14 @@
                           method="get">
                     <button class="btn btn-warning" type="submit">Editar</button>
                 </form></td>
+                <!--
                 <td class="col-1">
                     <form th:action="@{/curso/eliminar/{id}(id=${curso.id})}"
                           method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este curso?')">
                         <button class="btn btn-danger" type="submit">Eliminar</button>
                     </form>
                 </td>
+                -->
             </tr>
             </tbody>
 
